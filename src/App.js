@@ -6,8 +6,6 @@ import Header from "./Components/Header";
 
 
 
-
-
 export default function App() {
     const [NewsData, setNewsData] = React.useState([])
     const [darkMode, setDarkMode] = React.useState(true)
@@ -17,11 +15,8 @@ export default function App() {
             favColor: "all"
         }
     )
-
-
     
-    function handleChange(event) {
-        
+    function handleChange(event) {   
         const {value} = event.target
         setFormData(prevFormData => {
             return {
@@ -30,8 +25,6 @@ export default function App() {
         })
     }
         
-    
-    
     // side effects
     React.useEffect(function() {
         fetch(`https://inshorts.deta.dev/news?category=${formData.favColor}`)
@@ -44,7 +37,9 @@ export default function App() {
     }
     
     let cls = darkMode ? "dark": "white"
-    let comb = "all" + " " + cls
+    let comb = `"all" ${cls}`
+    
+    
     
 
     const CardElements = NewsData.map(news => {return <Card  
@@ -76,10 +71,7 @@ export default function App() {
 
             <main>
             {CardElements}
-            </main>
-
-            
-                              
+            </main>                              
         </div>
     )
 }
