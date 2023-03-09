@@ -11,16 +11,33 @@ import Header from "./Components/Header";
 export default function App() {
     const [NewsData, setNewsData] = React.useState([])
     const [darkMode, setDarkMode] = React.useState(true)
-    
+    const [formData, setFormData] = React.useState(
+        {
+
+            favColor: "all"
+        }
+    )
+
 
     
+    function handleChange(event) {
         
+        const {value} = event.target
+        setFormData(prevFormData => {
+            return {
+                favColor: value
+            }
+        })
+    }
+        
+    
+    
     // side effects
     React.useEffect(function() {
-        fetch("https://inshorts.deta.dev/news?category=all")
+        fetch(`https://inshorts.deta.dev/news?category=${formData.favColor}`)
             .then(res => res.json())
             .then(data => setNewsData(data.data))
-    }, [])
+    }, [formData.favColor])
     
     function toggleDarkMode() {
         setDarkMode(prevMode => !prevMode)
@@ -53,6 +70,8 @@ export default function App() {
                 darkMode={darkMode} 
                 toggleDarkMode={toggleDarkMode}
                 colse={cls}
+                handleChange={handleChange}
+                x = {formData.favColor}
             />
 
             <main>

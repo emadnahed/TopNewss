@@ -14,6 +14,13 @@ nav {
 }
 
 
+#favColor{
+  border-radius: 9px;
+  border: 2px solid black;
+  width: 111px;
+  height: 30px;
+}
+
 .header-logotxt {
   display: flex;
   justify-content: center;

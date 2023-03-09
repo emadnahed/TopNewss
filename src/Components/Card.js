@@ -8,7 +8,7 @@ import React from 'react'
 export default function Card(props) {    
     
     const trick = "Card" + " " + props.colse
-    console.log(trick)
+    // console.log(trick)
     return(
         
         <main className="card-whole">
